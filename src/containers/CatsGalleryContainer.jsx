@@ -1,8 +1,7 @@
 import React, { useMemo } from "react";
-import PreviewCard from "../components/Card/PreviewCard";
+import CatPreviewCard from "../components/Card/CatPreviewCard";
 import Button from "../components/Button/Button";
 import { removeDuplicates } from "../utils/removeDuplicates";
-import CatContainer from "./CatContainer";
 import { Link, useLocation } from "react-router";
 import useFetchCats from "../hooks/useFetchCats";
 
@@ -26,7 +25,7 @@ const CatsGalleryContainer = () => {
             state={{ backgroundLocation: location }}
             key={cat.id}
           >
-            <PreviewCard cat={cat} />
+            <CatPreviewCard cat={cat} />
           </Link>
         ))}
       </div>

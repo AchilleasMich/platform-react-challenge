@@ -1,9 +1,9 @@
 import React from "react";
 import Button from "../Button/Button";
 
-const InfoPage = ({ cat, breeds, loading, closeModal }) => {
+const CatInfoCard = ({ cat, breeds, loading, closeModal }) => {
   return (
-    <div className="p-2 max-w-lg">
+    <div className="bg-white rounded-lg p-4 max-w-lg shadow-md">
       <img
         src={cat.url}
         alt={`Cat ${cat.id}`}
@@ -27,9 +27,9 @@ const InfoPage = ({ cat, breeds, loading, closeModal }) => {
           No breed information available for this cat.
         </p>
       )}
-      <Button onClick={closeModal}>Home</Button>
+      <Button onClick={closeModal}>Close</Button>
     </div>
   );
 };
 
-export default InfoPage;
+export default CatInfoCard;

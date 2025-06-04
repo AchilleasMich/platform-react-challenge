@@ -1,6 +1,6 @@
 import React from "react";
 
-const PreviewCard = ({ cat }) => {
+const CatPreviewCard = ({ cat }) => {
   return (
     <>
       <div className="w-80 h-[30rem] bg-blue-500 flex items-center justify-center rounded-2xl overflow-hidden cursor-pointer">
@@ -15,4 +15,4 @@ const PreviewCard = ({ cat }) => {
   );
 };
 
-export default PreviewCard;
+export default CatPreviewCard;

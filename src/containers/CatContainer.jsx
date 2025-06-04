@@ -1,6 +1,6 @@
 import React from "react";
-import InfoCard from "../components/Card/InfoCard";
-import InfoPage from "../components/Pages/InfoPage";
+import CatInfoCard from "../components/Card/CatInfoCard";
+import CatInfoPage from "../components/Pages/CatInfoPage";
 import { useParams, useNavigate } from "react-router";
 import useFetchCatInfo from "../hooks/useFetchCatInfo";
 
@@ -15,7 +15,7 @@ const CatContainer = ({ isModal }) => {
 
   if (isModal) {
     return (
-      <InfoCard
+      <CatInfoCard
         cat={catInfo}
         breeds={catInfo?.breeds}
         closeModal={closeAction}
@@ -25,7 +25,7 @@ const CatContainer = ({ isModal }) => {
   }
 
   return (
-    <InfoPage
+    <CatInfoPage
       cat={catInfo}
       breeds={catInfo?.breeds}
       closeModal={closeAction}

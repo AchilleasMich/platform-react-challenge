@@ -1,34 +1,34 @@
 import React from "react";
 import InfoCard from "../components/Card/InfoCard";
+import InfoPage from "../components/Pages/InfoPage";
+import { useParams, useNavigate } from "react-router";
+import useFetchCatInfo from "../hooks/useFetchCatInfo";
 
-const CatContainer = ({ cat, closeModal }) => {
-  const [catInfo, setCatInfo] = React.useState(null);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(null);
+const CatContainer = ({ isModal }) => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { catInfo, loading } = useFetchCatInfo(id);
 
-  React.useEffect(() => {
-    setLoading(true);
-    setError(null);
-    fetch(`https://api.thecatapi.com/v1/images/${cat.id}`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch cat info");
-        return res.json();
-      })
-      .then((data) => {
-        setCatInfo(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, [cat]);
+  const closeAction = isModal ? () => navigate(-1) : () => navigate("/");
+
+  if (!catInfo) return null;
+
+  if (isModal) {
+    return (
+      <InfoCard
+        cat={catInfo}
+        breeds={catInfo?.breeds}
+        closeModal={closeAction}
+        loading={loading}
+      />
+    );
+  }
 
   return (
-    <InfoCard
-      cat={cat}
+    <InfoPage
+      cat={catInfo}
       breeds={catInfo?.breeds}
-      closeModal={closeModal}
+      closeModal={closeAction}
       loading={loading}
     />
   );

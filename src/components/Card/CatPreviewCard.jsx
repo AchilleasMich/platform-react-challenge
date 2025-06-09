@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const CatPreviewCard = ({ cat }) => {
   return (
@@ -13,6 +14,13 @@ const CatPreviewCard = ({ cat }) => {
       </div>
     </>
   );
+};
+
+CatPreviewCard.propTypes = {
+  cat: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default CatPreviewCard;

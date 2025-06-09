@@ -1,6 +1,7 @@
 // components/Modal.jsx
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
+import PropTypes from "prop-types";
 
 const Modal = ({ children }) => {
   const navigate = useNavigate();
@@ -30,6 +31,10 @@ const Modal = ({ children }) => {
       <div onClick={(e) => e.stopPropagation()}>{children}</div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Modal;

@@ -27,7 +27,7 @@ const App = () => {
           />
           <Route path="/breeds" element={<BreedsContainer />} />
           <Route path="/favorites" element={<div>Favorites Page</div>} />
-          <Route path="/breed/:id" element={<div>Breed Page</div>} />
+          <Route path="/breed/:id" element={<BreedContainer />} />
         </Routes>
         {state?.backgroundLocation && (
           <Routes>

@@ -1,11 +1,12 @@
 import React from "react";
 import useFetchCats from "../hooks/useFetchCats";
+import Button from "../components/Button/Button";
 
 const BreedsContainer = () => {
   const { fetchedCats, loading, fetchMore } = useFetchCats();
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <div className="flex flex-col items-center max-w-screen-xl mx-auto">
@@ -33,6 +34,7 @@ const BreedsContainer = () => {
           <p>No cat images available.</p>
         )}
       </div>
+      <Button onClick={fetchMore}>More</Button>
     </div>
   );
 };

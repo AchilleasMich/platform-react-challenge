@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "../Button/Button";
+import { catInfoShape } from "../../common/propTypes";
+import BreedInfo from "../BreedInfo";
 
 const CatInfoCard = ({ cat, breeds, loading, closeModal }) => {
   return (
@@ -10,18 +12,7 @@ const CatInfoCard = ({ cat, breeds, loading, closeModal }) => {
         className="w-full h-auto rounded"
       />
       {loading ? <p className="text-center text-gray-500">Loading...</p> : null}
-      {breeds && breeds.length > 0 && (
-        <div className="mt-4">
-          <h2 className="text-xl mb-2">Breeds</h2>
-          {breeds.map((breed) => (
-            <div key={breed.id} className="mb-2 flex flex-col gap-2">
-              <p className="text-xl font-bold">{breed.name}</p>
-              <p>{breed.description}</p>
-              <p>Origin: {breed.origin}</p>
-            </div>
-          ))}
-        </div>
-      )}
+      <BreedInfo breeds={breeds} />
       {!breeds && !loading && (
         <p className="text-center text-gray-500 mt-4">
           No breed information available for this cat.
@@ -30,6 +21,10 @@ const CatInfoCard = ({ cat, breeds, loading, closeModal }) => {
       <Button onClick={closeModal}>Close</Button>
     </div>
   );
+};
+
+CatInfoCard.propTypes = {
+  ...catInfoShape,
 };
 
 export default CatInfoCard;

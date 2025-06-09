@@ -3,6 +3,7 @@ import CatInfoCard from "../components/Card/CatInfoCard";
 import CatInfoPage from "../components/Pages/CatInfoPage";
 import { useParams, useNavigate } from "react-router";
 import useFetchCatInfo from "../hooks/useFetchCatInfo";
+import PropTypes from "prop-types";
 
 const CatContainer = ({ isModal }) => {
   const navigate = useNavigate();
@@ -32,6 +33,10 @@ const CatContainer = ({ isModal }) => {
       loading={loading}
     />
   );
+};
+
+CatContainer.propTypes = {
+  isModal: PropTypes.bool,
 };
 
 export default CatContainer;

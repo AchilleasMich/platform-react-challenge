@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 const CatLayout = ({ children }) => {
   return (
     <div className="max-w-xl mx-auto mt-4 mb-16 px-4">
@@ -7,6 +9,10 @@ const CatLayout = ({ children }) => {
       </div>
     </div>
   );
+};
+
+CatLayout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default CatLayout;

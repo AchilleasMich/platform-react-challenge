@@ -1,11 +1,12 @@
 import React from "react";
 import useFetchBreeds from "../hooks/useFetchBreeds";
 import { Link, useLocation } from "react-router";
+import BreedCard from "../components/Card/BreedCard";
 
 const BreedsContainer = () => {
   const { breeds, loading } = useFetchBreeds();
 
-  const location = useLocation();
+  const location = useLocation() || null;
 
   return (
     <div className="w-full max-w-4xl mx-auto p-4">
@@ -15,19 +16,7 @@ const BreedsContainer = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {breeds.map((breed) => (
-            <div
-              key={breed.id}
-              className="bg-white rounded-lg p-4 max-w-lg shadow-md border-gray-200 hover:shadow-lg transition-shadow duration-200"
-            >
-              <Link
-                to={"/breed/" + breed.id}
-                className="block mb-2 underline text-blue-600 hover:text-blue-800"
-                state={{ backgroundLocation: location }}
-              >
-                <h2 className="text-lg font-semibold mb-2">{breed.name}</h2>
-              </Link>
-              <p className="text-gray-700 text-sm">{breed.description}</p>
-            </div>
+            <BreedCard key={breed.id} breed={breed} location={location} />
           ))}
         </div>
       )}

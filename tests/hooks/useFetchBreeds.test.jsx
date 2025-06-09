@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from "@testing-library/react";
-import useBreeds from "../../src/hooks/useFetchBreeds";
-import { apiFetch } from "../../src/utils/client";
+import useBreeds from "@hooks/useFetchBreeds";
+import { apiFetch } from "@utils/client";
 
 vi.mock("../../src/utils/client", () => ({
   apiFetch: vi.fn(),

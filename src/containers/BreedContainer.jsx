@@ -1,12 +1,9 @@
 import React from "react";
-import useFetchCats from "../hooks/useFetchCats";
-import Button from "../components/ui/Button";
+import useFetchCats from "@hooks/useFetchCats";
+import Button from "@components/ui/Button";
 
 const BreedsContainer = () => {
   const { fetchedCats, loading, fetchMore } = useFetchCats();
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
 
   return (
     <div className="flex flex-col items-center max-w-screen-xl mx-auto">

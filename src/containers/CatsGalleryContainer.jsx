@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
-import CatPreviewCard from "../components/Cats/CatPreviewCard";
-import Button from "../components/ui/Button";
-import { removeDuplicates } from "../utils/removeDuplicates";
+import CatPreviewCard from "@components/Cats/CatPreviewCard";
+import Button from "@components/ui/Button";
+import { removeDuplicates } from "@utils/removeDuplicates";
 import { Link, useLocation } from "react-router";
-import useFetchCats from "../hooks/useFetchCats";
+import useFetchCats from "@hooks/useFetchCats";
 
 const CatsGalleryContainer = () => {
   const { fetchedCats, loading, fetchMore } = useFetchCats();

@@ -1,7 +1,7 @@
 import React from "react";
-import useFetchBreeds from "../hooks/useFetchBreeds";
+import useFetchBreeds from "@hooks/useFetchBreeds";
 import { useLocation } from "react-router";
-import { BreedCard } from "../components/Breeds";
+import { BreedCard } from "@components/Breeds";
 
 const SkeletonCard = () => (
   <div className="animate-pulse bg-red-300 rounded-lg h-48 w-full mb-4" />

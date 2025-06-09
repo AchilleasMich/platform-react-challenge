@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, useLocation } from "react-router";
-import Modal from "./components/ui/Modal";
-import { CatLayout, Header } from "./components/ui/Layout";
+import Modal from "@components/ui/Modal";
+import { CatLayout, Header } from "@components/ui/Layout";
 
 import {
   CatContainer,
@@ -9,7 +9,7 @@ import {
   BreedContainer,
   FavoritesContainer,
   CatsGalleryContainer,
-} from "./containers";
+} from "@containers";
 
 const App = () => {
   const location = useLocation();

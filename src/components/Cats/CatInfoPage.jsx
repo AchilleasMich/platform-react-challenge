@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../ui/Button";
+import Button from "@components/ui/Button";
 import { catInfoShape } from "../../common/propTypes";
-import { BreedInfo } from "../Breeds";
+import { BreedInfo } from "@components/Breeds";
 
 const CatInfoPage = ({ cat, breeds, loading, closeModal }) => {
   return (

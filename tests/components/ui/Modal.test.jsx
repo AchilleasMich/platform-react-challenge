@@ -1,4 +1,4 @@
-import Modal from "../../../src/components/ui/Modal";
+import Modal from "@components/ui/Modal";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { useNavigate } from "react-router";
 

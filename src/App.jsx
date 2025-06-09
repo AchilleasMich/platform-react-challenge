@@ -20,14 +20,7 @@ const App = () => {
       <main className="flex-1 p-4 flex justify-center items-start">
         <Routes location={state?.backgroundLocation || location}>
           <Route path="/" element={<CatsGalleryContainer />} />
-          <Route
-            path="/cat/:id"
-            element={
-              <CatLayout>
-                <CatContainer />
-              </CatLayout>
-            }
-          />
+          <Route path="/cat/:id" element={<CatContainer />} />
           <Route path="/breeds" element={<BreedsContainer />} />
           <Route path="/favorites" element={<FavoritesContainer />} />
           <Route path="/breed/:id" element={<BreedContainer />} />

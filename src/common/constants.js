@@ -6,3 +6,9 @@ export const CATS_URL = `${API_URL}/images/search`;
 export const FAVORITES_URL = `${API_URL}/favourites`;
 
 export const CATS_PER_PAGE = 10;
+
+export const NOTIFICATION_TIMEOUT = 3000;
+export const NOTIFICATION_TYPES = {
+  SUCCESS: "success",
+  ERROR: "error",
+};

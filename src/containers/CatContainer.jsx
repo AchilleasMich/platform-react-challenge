@@ -5,25 +5,28 @@ import useFetchCatInfo from "@hooks/useFetchCatInfo";
 import PropTypes from "prop-types";
 import { apiPost } from "@utils/client";
 import { FAVORITES_URL } from "../common/constants";
+import useNotification from "@hooks/useNotification";
 
 const CatContainer = ({ isModal }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { catInfo, loading } = useFetchCatInfo(id);
 
+  const notify = useNotification();
+
   const closeAction = isModal ? () => navigate(-1) : () => navigate("/");
 
   const handleAddToFavorites = (id) => {
-    console.log("Add to favorites clicked", id);
     const addToFavorites = async () => {
       try {
         const res = await apiPost(FAVORITES_URL, { image_id: id });
-        const data = await res.json();
-        console.log("Added to favorites:", data);
-        // Optionally, you can show a success message or update the UI
+        if (res.status === 200) {
+          notify.success("Added to favorites successfully");
+        } else {
+          throw new Error("Failed to add to favorites");
+        }
       } catch (error) {
-        console.error("Error adding to favorites:", error);
-        // Optionally, handle the error (e.g., show an error message)
+        notify.error("Failed to add to favorites: " + error.message);
       }
     };
     addToFavorites();

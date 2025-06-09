@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-
-const API_URL = "https://api.thecatapi.com/v1/breeds";
+import { BREEDS_URL } from "../constants";
+import { apiFetch } from "../utils/apiFetch";
 
 const useFetchBreedInfo = () => {
   const [breedInfo, setBreedInfo] = useState(null);
@@ -19,16 +19,21 @@ const useFetchBreedInfo = () => {
     setLoading(true);
     setError(null);
 
-    fetch(`${API_URL}/${id}`, { signal: controller.signal })
-      .then((res) => {
+    const fetchBreedInfo = async () => {
+      try {
+        const res = await apiFetch(`${BREEDS_URL}/${id}`, {
+          signal: controller.signal,
+        });
         if (!res.ok) throw new Error("Failed to fetch breed info");
-        return res.json();
-      })
-      .then((data) => setBreedInfo(data))
-      .catch((err) => {
+        setBreedInfo(res);
+      } catch (err) {
         if (err.name !== "AbortError") setError(err.message);
-      })
-      .finally(() => setLoading(false));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBreedInfo();
 
     return () => controller.abort();
   }, [id]);

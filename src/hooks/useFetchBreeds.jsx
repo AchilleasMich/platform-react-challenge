@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { BREEDS_URL } from "../constants";
+import { apiFetch } from "../utils/apiFetch";
 
 const useBreeds = () => {
   const [breeds, setBreeds] = useState([]);
@@ -10,7 +12,7 @@ const useBreeds = () => {
 
     const fetchBreeds = async () => {
       try {
-        const response = await fetch("https://api.thecatapi.com/v1/breeds", {
+        const response = await apiFetch(BREEDS_URL, {
           signal: controller.signal,
         });
         if (!response.ok) {

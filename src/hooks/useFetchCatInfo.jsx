@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { CATS_BASE_URL } from "../constants";
+import { apiFetch } from "../utils/apiFetch";
 
 const useFetchCatInfo = (id) => {
   const [catInfo, setCatInfo] = useState(null);
@@ -10,7 +12,7 @@ const useFetchCatInfo = (id) => {
     const fetchCatInfo = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`https://api.thecatapi.com/v1/images/${id}`, {
+        const res = await apiFetch(`${CATS_BASE_URL}/${id}`, {
           signal: controller.signal,
         });
         if (!res.ok) throw new Error("Failed to fetch cat info");

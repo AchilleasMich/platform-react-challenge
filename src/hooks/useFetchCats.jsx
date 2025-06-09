@@ -1,6 +1,14 @@
 import { useState, useCallback, useEffect } from "react";
-const CATS_PER_PAGE = 10;
-const CATS_API_URL = "https://api.thecatapi.com/v1/images/search";
+import { CATS_URL, CATS_PER_PAGE } from "../constants";
+import { apiFetch } from "../utils/apiFetch";
+
+const buildCatsUrl = (breedId, pageNum) => {
+  let url = `${CATS_URL}?limit=${CATS_PER_PAGE}&page=${pageNum}`;
+  if (breedId) {
+    url += `&breed_id=${breedId}`;
+  }
+  return url;
+};
 
 const useFetchCats = (breedId) => {
   const [fetchedCats, setFetchedCats] = useState([]);
@@ -10,11 +18,8 @@ const useFetchCats = (breedId) => {
   const fetchCats = useCallback(async (pageNum = 0, controller) => {
     setLoading(true);
     try {
-      const url =
-        CATS_API_URL +
-        `?limit=${CATS_PER_PAGE}&page=${pageNum}` +
-        (breedId ? `&breed_id=${breedId}` : "");
-      const response = await fetch(url, { signal: controller?.signal });
+      const url = buildCatsUrl(breedId, pageNum);
+      const response = await apiFetch(url, { signal: controller?.signal });
       const data = await response.json();
       setFetchedCats((prev) => [...prev, ...data]);
     } catch (error) {

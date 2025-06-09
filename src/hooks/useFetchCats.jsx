@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { CATS_URL, CATS_PER_PAGE } from "../constants";
-import { apiFetch } from "../utils/apiFetch";
+import { apiFetch } from "../utils/client";
 
 const buildCatsUrl = (breedId, pageNum) => {
   let url = `${CATS_URL}?limit=${CATS_PER_PAGE}&page=${pageNum}`;

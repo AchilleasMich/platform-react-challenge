@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { BREEDS_URL } from "../constants";
-import { apiFetch } from "../utils/apiFetch";
+import { apiFetch } from "../utils/client";
 
 const useBreeds = () => {
   const [breeds, setBreeds] = useState([]);

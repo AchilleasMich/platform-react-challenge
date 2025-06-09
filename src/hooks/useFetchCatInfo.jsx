@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { CATS_BASE_URL } from "../constants";
-import { apiFetch } from "../utils/apiFetch";
+import { apiFetch } from "../utils/client";
 
 const useFetchCatInfo = (id) => {
   const [catInfo, setCatInfo] = useState(null);

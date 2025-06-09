@@ -7,6 +7,7 @@ import Modal from "./components/Modal/Modal";
 import CatLayout from "./components/Layout/CatLayout";
 import BreedsContainer from "./containers/BreedsContainer";
 import BreedContainer from "./containers/BreedContainer";
+import FavoritesContainer from "./containers/FavoritesContainer";
 
 const App = () => {
   const location = useLocation();
@@ -26,7 +27,7 @@ const App = () => {
             }
           />
           <Route path="/breeds" element={<BreedsContainer />} />
-          <Route path="/favorites" element={<div>Favorites Page</div>} />
+          <Route path="/favorites" element={<FavoritesContainer />} />
           <Route path="/breed/:id" element={<BreedContainer />} />
         </Routes>
         {state?.backgroundLocation && (

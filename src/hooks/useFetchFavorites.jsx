@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { FAVORITES_URL } from "../constants";
+import { FAVORITES_URL } from "../common/constants";
 import { apiFetch } from "../utils/client";
 
 const useFetchFavorites = () => {

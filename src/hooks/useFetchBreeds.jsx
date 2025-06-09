@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BREEDS_URL } from "../constants";
+import { BREEDS_URL } from "../common/constants";
 import { apiFetch } from "../utils/client";
 
 const useBreeds = () => {
@@ -28,7 +28,7 @@ const useBreeds = () => {
         setLoading(false);
       }
     };
-
+    setLoading(true);
     fetchBreeds();
 
     return () => {

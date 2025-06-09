@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../Button/Button";
+import Button from "../ui/Button";
 import { catInfoShape } from "../../common/propTypes";
-import BreedInfo from "../BreedInfo";
+import { BreedInfo } from "../Breeds";
 import PropTypes from "prop-types";
 
 const CatInfoCard = ({

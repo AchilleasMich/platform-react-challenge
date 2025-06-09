@@ -1,11 +1,10 @@
 import React from "react";
-import CatInfoCard from "../components/Card/CatInfoCard";
-import CatInfoPage from "../components/Pages/CatInfoPage";
+import { CatInfoCard, CatInfoPage } from "../components/Cats";
 import { useParams, useNavigate } from "react-router";
 import useFetchCatInfo from "../hooks/useFetchCatInfo";
 import PropTypes from "prop-types";
 import { apiPost } from "../utils/client";
-import { FAVORITES_URL } from "../constants";
+import { FAVORITES_URL } from "../common/constants";
 
 const CatContainer = ({ isModal }) => {
   const navigate = useNavigate();

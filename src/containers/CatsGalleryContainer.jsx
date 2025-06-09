@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
-import CatPreviewCard from "../components/Card/CatPreviewCard";
-import Button from "../components/Button/Button";
+import CatPreviewCard from "../components/Cats/CatPreviewCard";
+import Button from "../components/ui/Button";
 import { removeDuplicates } from "../utils/removeDuplicates";
 import { Link, useLocation } from "react-router";
 import useFetchCats from "../hooks/useFetchCats";

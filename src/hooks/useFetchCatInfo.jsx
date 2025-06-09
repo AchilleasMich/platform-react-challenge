@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CATS_BASE_URL } from "../constants";
+import { CATS_BASE_URL } from "../common/constants";
 import { apiFetch } from "../utils/client";
 
 const useFetchCatInfo = (id) => {

@@ -6,8 +6,14 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   test: {
-    globals: true,
-    environment: "node",
-    include: ["src/**/*.test.js", "tests/**/*.test.js"],
+    environment: "jsdom",
+    setupFiles: "./tests/setup.js", // optional
+    globals: true, // if you want to use `describe`, `it`, etc. globally
+    include: [
+      "src/**/*.test.js",
+      "tests/**/*.test.js",
+      "src/**/*.test.jsx",
+      "tests/**/*.test.jsx",
+    ],
   },
 });

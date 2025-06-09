@@ -1,4 +1,3 @@
-// components/Modal.jsx
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import PropTypes from "prop-types";

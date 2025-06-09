@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useFetchFavorites from "../hooks/useFetchFavorites";
-import Button from "../components/Button/Button";
+import Button from "../components/ui/Button";
 
 const FavoritesContainer = () => {
   const { favorites, removeFavorite } = useFetchFavorites();

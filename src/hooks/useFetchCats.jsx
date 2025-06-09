@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { CATS_URL, CATS_PER_PAGE } from "../constants";
+import { CATS_URL, CATS_PER_PAGE } from "../common/constants";
 import { apiFetch } from "../utils/client";
 
 const buildCatsUrl = (breedId, pageNum) => {
@@ -33,13 +33,16 @@ const useFetchCats = (breedId) => {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetchCats(page, controller);
+    const run = async () => {
+      await fetchCats(page, controller);
+    };
+    run();
     return () => controller.abort();
   }, [page, fetchCats]);
 
   const fetchMore = () => {
     if (!loading) {
-      setPage((prev) => prev + 1); // triggers useEffect
+      setPage((prev) => prev + 1);
     }
   };
 

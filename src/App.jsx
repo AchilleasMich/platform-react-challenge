@@ -1,13 +1,15 @@
 import React from "react";
-import Header from "./components/Header";
-import CatsGalleryContainer from "./containers/CatsGalleryContainer";
 import { Route, Routes, useLocation } from "react-router";
-import CatContainer from "./containers/CatContainer";
-import Modal from "./components/Modal/Modal";
-import CatLayout from "./components/Layout/CatLayout";
-import BreedsContainer from "./containers/BreedsContainer";
-import BreedContainer from "./containers/BreedContainer";
-import FavoritesContainer from "./containers/FavoritesContainer";
+import Modal from "./components/ui/Modal";
+import { CatLayout, Header } from "./components/ui/Layout";
+
+import {
+  CatContainer,
+  BreedsContainer,
+  BreedContainer,
+  FavoritesContainer,
+  CatsGalleryContainer,
+} from "./containers";
 
 const App = () => {
   const location = useLocation();

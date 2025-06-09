@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Button = ({ onClick, children, className = "", rest }) => (
+const Button = ({ onClick, children, className = "", ...rest }) => (
   <button
     onClick={onClick}
     className={`px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-800 transition ${className}`}

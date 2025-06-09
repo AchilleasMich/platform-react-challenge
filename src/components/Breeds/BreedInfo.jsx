@@ -1,5 +1,5 @@
 import React from "react";
-import { breedListShape } from "../common/propTypes";
+import { breedListShape } from "../../common/propTypes";
 
 const BreedInfo = ({ breeds }) => {
   if (!breeds || breeds.length === 0) {

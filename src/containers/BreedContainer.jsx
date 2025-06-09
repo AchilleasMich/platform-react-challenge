@@ -1,6 +1,6 @@
 import React from "react";
 import useFetchCats from "../hooks/useFetchCats";
-import Button from "../components/Button/Button";
+import Button from "../components/ui/Button";
 
 const BreedsContainer = () => {
   const { fetchedCats, loading, fetchMore } = useFetchCats();

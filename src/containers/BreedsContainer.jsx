@@ -1,14 +1,15 @@
 import React from "react";
-import useFetchBreeds from "@hooks/useFetchBreeds";
 import { useLocation } from "react-router";
 import { BreedCard } from "@components/Breeds";
+import useFetch from "@hooks/useFetch";
+import { BREEDS_URL } from "@common/constants";
 
 const SkeletonCard = () => (
   <div className="animate-pulse bg-red-300 rounded-lg h-48 w-full mb-4" />
 );
 
 const BreedsContainer = () => {
-  const { breeds, loading } = useFetchBreeds();
+  const { data: breeds, loading } = useFetch(BREEDS_URL, { defaultValue: [] });
 
   const location = useLocation() || null;
 

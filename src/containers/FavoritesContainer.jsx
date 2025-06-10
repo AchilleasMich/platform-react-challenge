@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import useFetchFavorites from "@hooks/useFetchFavorites";
+import useFetch from "@hooks/useFetch";
 import Button from "@components/ui/Button";
+import { FAVORITES_URL } from "@common/constants";
 
 const FavoritesContainer = () => {
-  const { favorites, removeFavorite } = useFetchFavorites();
+  const {
+    data: favorites,
+    loading,
+    deleteResource: removeFavorite,
+  } = useFetch(FAVORITES_URL, { deleteMethod: true });
   const [removingId, setRemovingId] = useState(null);
 
   const handleRemove = async (id) => {
+    console.log(`Removing favorite with ID: ${id}`);
     setRemovingId(id);
     if (removeFavorite) {
       await removeFavorite(id);

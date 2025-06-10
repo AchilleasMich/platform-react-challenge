@@ -1,9 +1,19 @@
 import React from "react";
-import useFetchCats from "@hooks/useFetchCats";
 import Button from "@components/ui/Button";
+import useFetch from "@hooks/useFetch";
+import { CATS_URL } from "@common/constants";
 
 const BreedsContainer = () => {
-  const { fetchedCats, loading, fetchMore } = useFetchCats();
+  const {
+    data: fetchedCats,
+    loading,
+    fetchMore,
+    error,
+  } = useFetch(CATS_URL, {
+    defaultValue: [],
+    pagination: true,
+    accumulate: true,
+  });
 
   return (
     <div className="flex flex-col items-center max-w-screen-xl mx-auto">

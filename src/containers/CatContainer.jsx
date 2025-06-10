@@ -1,16 +1,16 @@
 import React from "react";
 import { CatInfoCard, CatInfoPage } from "@components/Cats";
 import { useParams, useNavigate } from "react-router";
-import useFetchCatInfo from "@hooks/useFetchCatInfo";
 import PropTypes from "prop-types";
 import { apiPost } from "@utils/client";
-import { FAVORITES_URL } from "../common/constants";
+import { FAVORITES_URL, CATS_BASE_URL } from "../common/constants";
 import useNotification from "@hooks/useNotification";
+import useFetch from "@hooks/useFetch";
 
 const CatContainer = ({ isModal }) => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { catInfo, loading } = useFetchCatInfo(id);
+  const { data: catInfo, loading, error } = useFetch(`${CATS_BASE_URL}/${id}`);
 
   const notify = useNotification();
 
@@ -31,6 +31,15 @@ const CatContainer = ({ isModal }) => {
     };
     addToFavorites();
   };
+
+  if (error) {
+    return (
+      <div className="error-message">
+        <p>Error fetching cat information: {error.message}</p>
+        <button onClick={closeAction}>Close</button>
+      </div>
+    );
+  }
 
   if (!catInfo) return null;
 

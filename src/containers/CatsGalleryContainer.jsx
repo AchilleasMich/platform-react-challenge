@@ -3,11 +3,20 @@ import CatPreviewCard from "@components/Cats/CatPreviewCard";
 import Button from "@components/ui/Button";
 import { removeDuplicates } from "@utils/removeDuplicates";
 import { Link, useLocation } from "react-router";
-import useFetchCats from "@hooks/useFetchCats";
+import useFetch from "@hooks/useFetch";
+import { CATS_URL } from "@common/constants";
 
 const CatsGalleryContainer = () => {
-  const { fetchedCats, loading, fetchMore } = useFetchCats();
-
+  const {
+    data: fetchedCats,
+    loading,
+    fetchMore,
+    error,
+  } = useFetch(CATS_URL, {
+    defaultValue: [],
+    pagination: true,
+    accumulate: true,
+  });
   const location = useLocation();
 
   // Compute unique cats only when fetchedCats changes
@@ -15,6 +24,14 @@ const CatsGalleryContainer = () => {
     () => removeDuplicates(fetchedCats),
     [fetchedCats]
   );
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center max-w-screen-xl mx-auto">
+        <h2 className="text-red-500">Error: {error}</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center max-w-screen-xl mx-auto">
